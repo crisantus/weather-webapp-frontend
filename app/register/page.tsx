@@ -27,7 +27,7 @@ export default function RegisterPage() {
       // Show the backend error when the API sends one. This makes debugging easier.
       if (axios.isAxiosError(err)) {
         const message = err.response?.data?.message;
-        setError(typeof message === "string" ? message : "Unable to create account. Check your details and try again.");
+        setError(typeof message === "string" ? message : "Unable to create account. Check yols and try again.");
         return null;
       }
 
