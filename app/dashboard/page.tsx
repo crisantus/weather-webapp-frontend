@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import axios from "axios";
 import { AppShell } from "../../components/layout/AppShell";
 import { WeatherCard } from "../../components/weather/WeatherCard";
 import { getWeatherHistory } from "../../services/history.service";
@@ -31,10 +32,16 @@ export default function DashboardPage() {
 
     try {
       // Call the backend through the weather service, then show the result on the page.
-      const response = await getCurrentWeather(city);
+      const response = await getCurrentWeather(city.trim());
       setWeather(response.data.weather);
       await loadHistory();
     } catch (err) {
+      if (axios.isAxiosError(err)) {
+        const message = err.response?.data?.message;
+        setError(typeof message === "string" ? message : "Unable to fetch weather for that city.");
+        return;
+      }
+
       setError("Unable to fetch weather for that city.");
     } finally {
       setLoading(false);
