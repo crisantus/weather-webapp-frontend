@@ -1,14 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import axios from "axios";
 import { registerUser } from "../../services/auth.service";
 import { ACCESS_TOKEN_KEY } from "../../utils/constants";
 
 export default function RegisterPage() {
-  const router = useRouter();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -30,7 +28,9 @@ export default function RegisterPage() {
 
       // Save the returned token so the user is logged in immediately.
       window.localStorage.setItem(ACCESS_TOKEN_KEY, response.data.accessToken);
-      router.push("/dashboard");
+
+      // Use a full browser navigation so the dashboard reads the saved token fresh.
+      window.location.href = "/dashboard";
     } catch (err) {
       // Show the backend error when the API sends one. This makes debugging easier.
       if (axios.isAxiosError(err)) {
