@@ -17,40 +17,32 @@ export default function RegisterPage() {
     setLoading(true);
     const formData = new FormData(event.currentTarget);
 
-    // Send the form values to the backend register endpoint.
-    const response = await registerUser({
-      name: String(formData.get("name") ?? ""),
-      email: String(formData.get("email") ?? ""),
-      password: String(formData.get("password") ?? ""),
-      confirmPassword: String(formData.get("confirmPassword") ?? "")
-    }).catch((err) => {
+    try {
+      // Send the form values to the backend register endpoint.
+      const response = await registerUser({
+        name: String(formData.get("name") ?? ""),
+        email: String(formData.get("email") ?? ""),
+        password: String(formData.get("password") ?? ""),
+        confirmPassword: String(formData.get("confirmPassword") ?? "")
+      });
+
+      // Save the returned token so the user is logged in immediately.
+      window.localStorage.setItem(ACCESS_TOKEN_KEY, response.data.accessToken);
+
+      // Use a full browser navigation so the dashboard reads the saved token fresh.
+      window.location.href = "/dashboard";
+    } catch (err) {
       // Show the backend error when the API sends one. This makes debugging easier.
       if (axios.isAxiosError(err)) {
         const message = err.response?.data?.message;
-        setError(typeof message === "string" ? message : "Unable to create account. Check yols and try again.");
-        return null;
+        setError(typeof message === "string" ? message : "Unable to create account. Check your details and try again.");
+        return;
       }
 
       setError("Unable to create account. Check your details and try again.");
-      return null;
-    });
-
-    if (!response) {
+    } finally {
       setLoading(false);
-      return;
     }
-
-    if (!response.data.accessToken) {
-      setError("Account created, but no login token was returned.");
-      setLoading(false);
-      return;
-    }
-
-    // Save the returned token so the user is logged in immediately.
-    window.localStorage.setItem(ACCESS_TOKEN_KEY, response.data.accessToken);
-
-    // Use a full browser navigation so the dashboard reads the saved token fresh.
-    window.location.assign("/dashboard");
   };
 
   return (
