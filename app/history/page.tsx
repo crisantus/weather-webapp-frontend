@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AppShell } from "../../components/layout/AppShell";
-import {
+import { 
   clearWeatherHistory,
   deleteWeatherHistoryItem,
   getWeatherHistory
