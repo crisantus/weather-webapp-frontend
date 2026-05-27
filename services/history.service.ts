@@ -7,3 +7,20 @@ export const getWeatherHistory = () => {
     "/api/weather-history"
   );
 };
+
+// Get one saved weather history record.
+export const getWeatherHistoryItem = (id: string) => {
+  return api.get<{ status: boolean; message: string; history: WeatherHistory }>(
+    `/api/weather-history/${id}`
+  );
+};
+
+// Delete one saved weather history record.
+export const deleteWeatherHistoryItem = (id: string) => {
+  return api.delete<{ status: boolean; message: string }>(`/api/weather-history/${id}`);
+};
+
+// Delete every saved weather history record for the logged-in user.
+export const clearWeatherHistory = () => {
+  return api.delete<{ status: boolean; message: string }>("/api/weather-history");
+};
