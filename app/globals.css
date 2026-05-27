@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global color defaults for the whole client app. */
+:root {
+  color: #172026;
+  background: #f6fafb;
+}
+
+/* Make the page at least the full height of the browser window. */
+body {
+  min-height: 100vh;
+}
+
+/* Keep form controls using the same font as the rest of the app. */
+button,
+input {
+  font: inherit;
+}
