@@ -2,4 +2,4 @@
 export const ACCESS_TOKEN_KEY = "weathertrack_access_token";
 
 // Backend API URL. The environment variable can override this in production.
-export const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL ;
+export const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000";

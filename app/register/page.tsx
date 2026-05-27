@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import axios from "axios";
 import { registerUser } from "../../services/auth.service";
 import { ACCESS_TOKEN_KEY } from "../../utils/constants";
 
@@ -31,6 +32,13 @@ export default function RegisterPage() {
       window.localStorage.setItem(ACCESS_TOKEN_KEY, response.data.accessToken);
       router.push("/dashboard");
     } catch (err) {
+      // Show the backend error when the API sends one. This makes debugging easier.
+      if (axios.isAxiosError(err)) {
+        const message = err.response?.data?.message;
+        setError(typeof message === "string" ? message : "Unable to create account. Check your details and try again.");
+        return;
+      }
+
       setError("Unable to create account. Check your details and try again.");
     } finally {
       setLoading(false);
