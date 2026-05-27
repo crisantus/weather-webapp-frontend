@@ -1,6 +1,6 @@
 # WeatherTrack Client
 
-This is the frontend for WeatherTrack. It is a Next.js app that lets users register, log in, search weather, save locations, view history, and see their profile.
+This is the frontend for WeatherTrack. It is a Next.js app that lets users register, log in, search weather, view history, and see their profile.
 
 ## Tech Stack
 
@@ -115,7 +115,6 @@ npm run typecheck
 /register     # Create account
 /login        # Login
 /dashboard    # Search weather
-/locations    # Saved locations
 /history      # Weather search history
 /profile      # User profile
 ```

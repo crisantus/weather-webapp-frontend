@@ -6,7 +6,6 @@ import { ACCESS_TOKEN_KEY } from "../../utils/constants";
 
 const navItems = [
   { href: "/dashboard", label: "Dashboard" },
-  { href: "/locations", label: "Locations" },
   { href: "/history", label: "History" },
   { href: "/profile", label: "Profile" }
 ];

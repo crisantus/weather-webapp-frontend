@@ -12,12 +12,12 @@ const features = [
     description: "Search any city and see current temperature, humidity, wind, and conditions."
   },
   {
-    title: "Save your places",
-    description: "Keep favorite cities in your account so you can return to them quickly."
+    title: "Track each search",
+    description: "Keep a clear record of the weather checks you make from the dashboard."
   },
   {
     title: "Review your history",
-    description: "Every weather check can be saved, making it easy to compare past searches."
+    description: "Open past searches, review the full details, or delete records you no longer need."
   }
 ];
 
@@ -48,8 +48,8 @@ export default function HomePage() {
             Know the weather before you make your move.
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
-            WeatherTrack helps you check live weather, save important locations, and keep a clear
-            history of the cities you search.
+            WeatherTrack helps you check live weather and keep a clear history of the cities you
+            search.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
@@ -71,9 +71,9 @@ export default function HomePage() {
         <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
           <div className="rounded-lg bg-ink p-6 text-white">
             <p className="text-sm font-semibold text-teal-100">Today&apos;s overview</p>
-            <p className="mt-4 text-5xl font-bold">3 saved cities</p>
+            <p className="mt-4 text-5xl font-bold">3 recent searches</p>
             <p className="mt-3 leading-7 text-slate-200">
-              Compare weather in different places before work, travel, or daily plans.
+              Compare recent weather checks before work, travel, or daily plans.
             </p>
           </div>
 
@@ -116,8 +116,8 @@ export default function HomePage() {
       {/* Final call to action before the footer area. */}
       <section className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-12 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h2 className="text-2xl font-bold">Ready to track your own locations?</h2>
-          <p className="mt-2 text-slate-600">Create an account, then search and save the cities you care about.</p>
+          <h2 className="text-2xl font-bold">Ready to track your weather searches?</h2>
+          <p className="mt-2 text-slate-600">Create an account, then search cities and review your history.</p>
         </div>
         <Link href="/register" className="w-fit rounded-md bg-ink px-5 py-3 font-semibold text-white hover:bg-slate-800">
           Start now
